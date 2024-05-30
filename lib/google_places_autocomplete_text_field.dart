@@ -245,17 +245,9 @@ class _GooglePlacesAutoCompleteTextFormFieldState
 
   Future<void> getLocation(String text) async {
     final prefix = widget.proxyURL ?? "";
-    final language = widget.language ?? "";
-    String url = "";
-    if(language.isNotEmpty){
-       url = 
-         "${prefix}https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$text&key=${widget.googleAPIKey}&language=$language";
-    }else{
-       url =
-        "${prefix}https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$text&key=${widget.googleAPIKey}";
-    }
+    final language = widget.language ?? "en";
+    String url =  "${prefix}https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$text&key=${widget.googleAPIKey}&language=$language&types=establishment";
     
-
     if (widget.countries != null) {
       for (int i = 0; i < widget.countries!.length; i++) {
         final country = widget.countries![i];
