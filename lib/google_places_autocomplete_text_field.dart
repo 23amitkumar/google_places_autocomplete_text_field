@@ -350,7 +350,7 @@ class _GooglePlacesAutoCompleteTextFormFieldState
       final prefix = widget.proxyURL ?? "";
       final language = widget.language ?? "en";
       final url =
-          "${prefix}https://maps.googleapis.com/maps/api/place/details/json?placeid=${prediction.placeId}&key=${widget.googleAPIKey}&language=$language";
+          "${prefix}https://maps.googleapis.com/maps/api/place/details/json?placeid=${prediction.placeId}&key=${widget.googleAPIKey}&language=$language&types=establishment";
       final response = await _dio.get(
         url,
       );
