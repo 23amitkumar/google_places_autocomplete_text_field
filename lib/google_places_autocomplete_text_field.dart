@@ -249,9 +249,8 @@ class _GooglePlacesAutoCompleteTextFormFieldState
     String url =  "${prefix}https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$text&key=${widget.googleAPIKey}&language=$language&types=establishment";
 
     if (widget.countries != null) {
-      var countries = widget.countries?.length??0;
-      for (int i = 0; i < countries; i++) {
-        final country = countries[i];
+      for (int i = 0; i < widget.countries!.length; i++) {
+        final country = widget.countries![i];
 
         if (i == 0) {
           url = "$url&components=country:$country";
