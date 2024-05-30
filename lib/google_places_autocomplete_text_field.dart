@@ -248,10 +248,9 @@ class _GooglePlacesAutoCompleteTextFormFieldState
     final language = widget.language ?? "en";
     String url =  "${prefix}https://maps.googleapis.com/maps/api/place/autocomplete/json?input=$text&key=${widget.googleAPIKey}&language=$language&types=establishment";
 
-    if (widget.countries != null) {
-      for (int i = 0; i < widget.countries!.length; i++) {
-        final country = widget.countries![i];
-
+       if ((widget.countries??[]).isNotEmpty) {
+      for (int i = 0; i < (widget.countries?.length??0); i++) {
+        final country = widget.countries?[i]??"";
         if (i == 0) {
           url = "$url&components=country:$country";
         } else {
