@@ -26,31 +26,44 @@ class PlacesAutocompleteResponse {
 
 class Prediction {
   String? description;
-  String? id;
   List<MatchedSubstrings>? matchedSubstrings;
   String? placeId;
   String? reference;
   StructuredFormatting? structuredFormatting;
   List<Terms>? terms;
   List<String>? types;
-  String? lat;
-  String? lng;
+  dynamic lat;
+  dynamic lng;
+  dynamic location;
+  dynamic categoryName;
+  dynamic profile_image;
+  dynamic color;
+  dynamic colorName;
+  dynamic id;
+  dynamic is_featured;
+   dynamic sourceType;
 
   Prediction(
       {this.description,
-      this.id,
       this.matchedSubstrings,
       this.placeId,
       this.reference,
       this.structuredFormatting,
       this.terms,
       this.types,
+      this.location,
+      this.categoryName,
+      this.profile_image,
+      this.color,
+      this.colorName,
+      this.is_featured,
+      this.id,
       this.lat,
+        this.sourceType,
       this.lng});
 
   Prediction.fromJson(Map<String, dynamic> json) {
     description = json['description'];
-    id = json['id'];
     if (json['matched_substrings'] != null) {
       matchedSubstrings = [];
       json['matched_substrings'].forEach((v) {
@@ -71,12 +84,18 @@ class Prediction {
     types = json['types'].cast<String>();
     lat = json['lat'];
     lng = json['lng'];
+    location = json['location'];
+    categoryName = json['categoryName'];
+    profile_image = json['profile_image'];
+    color = json['color'];
+    colorName = json['colorName'];
+    is_featured = json['is_featured'];
+    id = json['id'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['description'] = description;
-    data['id'] = id;
     if (matchedSubstrings != null) {
       data['matched_substrings'] =
           matchedSubstrings!.map((v) => v.toJson()).toList();
@@ -92,6 +111,13 @@ class Prediction {
     data['types'] = types;
     data['lat'] = lat;
     data['lng'] = lng;
+    data['color'] = color;
+    data['id'] = id;
+    data['profile_image'] = profile_image;
+    data['categoryName'] = categoryName;
+    data['location'] = location;
+    data['colorName'] = colorName;
+    data['is_featured'] = is_featured;
 
     return data;
   }
